@@ -14,4 +14,8 @@ ansible spark-cluster -i hosts -b -m raw -a "test -e /usr/bin/python || (apt-get
 
 ansible all -i hosts -b -m group -a "name=hadoop state=present"
 
+###### create user
+
+ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop append=yes"
+
 ansible all -i hosts -b -m file -a "path=/usr/dap state=directory owner=spark group=hadoop mode=0775"

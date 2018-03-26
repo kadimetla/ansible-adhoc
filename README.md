@@ -18,4 +18,10 @@ ansible all -i hosts -b -m group -a "name=hadoop state=present"
 
 ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop append=yes"
 
+###### create directory
+
 ansible all -i hosts -b -m file -a "path=/usr/dap state=directory owner=spark group=hadoop mode=0775"
+
+###### download load
+
+ansible all -i hosts -b -m get_url -a "url=http://mirrors.koehn.com/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz dest=/usr/dap"

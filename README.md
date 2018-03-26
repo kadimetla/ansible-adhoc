@@ -30,6 +30,9 @@ ansible all -i hosts -b -m file -a "path=/usr/dap state=directory owner=spark gr
 
 ansible all -i hosts -b -m get_url -a "url=http://mirrors.koehn.com/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz dest=/usr/dap"
 
+###### fetch files to local
+ansible spark-worker -i hosts -b -m fetch -a "src=/home/spark/.ssh/id_rsa dest=." 
+
 ###### download load and unarchive 
 ansible all -i hosts -b -m unarchive -a "src=http://mirrors.koehn.com/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz dest=/usr/dap remote_src=yes owner=spark group=hadoop"
 

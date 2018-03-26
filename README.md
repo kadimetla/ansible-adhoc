@@ -41,3 +41,5 @@ ansible all -i hosts -b -m unarchive -a "src=http://mirrors.koehn.com/apache/spa
 
 ###### remove a file
 ansible all -i hosts -b -m file -a "path=/usr/dap/spark-2.3.0-bin-hadoop2.7.tgz state=absent"
+###### copy local file to remote nodes
+ansible all -i hosts -b -m copy -a "src=spark-env.sh  dest=/usr/dap/spark-2.3.0-bin-hadoop2.7/conf/ owner=spark group=hadoop"

@@ -28,3 +28,6 @@ ansible all -i hosts -b -m get_url -a "url=http://mirrors.koehn.com/apache/spark
 
 ###### download load and unarchive 
 ansible all -i hosts -b -m unarchive -a "src=http://mirrors.koehn.com/apache/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz dest=/usr/dap remote_src=yes owner=spark group=hadoop"
+
+###### remove a file
+ansible all -i hosts -b -m file -a "path=/usr/dap/spark-2.3.0-bin-hadoop2.7.tgz state=absent"

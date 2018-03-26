@@ -18,6 +18,8 @@ ansible all -i hosts -b -m group -a "name=hadoop state=present"
 
 ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop append=yes"
 
+ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop append=yes generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa"
+
 ###### create directory
 
 ansible all -i hosts -b -m file -a "path=/usr/dap state=directory owner=spark group=hadoop mode=0775"

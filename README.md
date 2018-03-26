@@ -49,3 +49,5 @@ ansible all -i hosts -b -m copy -a "src=slaves  dest=/usr/dap/spark-2.3.0-bin-ha
 ansible all -i hosts -b -m package -a "name=default-jdk state=latest"
 ###### install python pip
 ansible all -i hosts -b -m package -a "name=python-pip  state=latest"
+###### install awscli
+ansible all -i hosts -b -m pip -a "name=awscli  state=latest"

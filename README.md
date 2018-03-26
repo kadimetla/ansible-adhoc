@@ -1,5 +1,6 @@
 # ansible-adhoc
 
+###### raw uses ssh commands - nodes with out python use raw module
 ansible all -i "10.0.1.15," -m raw -a "ls -la" --user ubuntu --private-key ~/.ssh/xxxx-nodes-kp.pem
 
 -s -- runs command as sudo 
@@ -44,3 +45,5 @@ ansible all -i hosts -b -m file -a "path=/usr/dap/spark-2.3.0-bin-hadoop2.7.tgz 
 ###### copy local file to remote nodes
 ansible all -i hosts -b -m copy -a "src=spark-env.sh  dest=/usr/dap/spark-2.3.0-bin-hadoop2.7/conf/ owner=spark group=hadoop"
 ansible all -i hosts -b -m copy -a "src=slaves  dest=/usr/dap/spark-2.3.0-bin-hadoop2.7/conf/ owner=spark group=hadoop"
+###### install open jdk
+ansible all -i hosts -b -m package -a "name=default-jdk state=latest"

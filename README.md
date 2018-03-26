@@ -20,6 +20,8 @@ ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop app
 
 ansible all -i hosts -b -m user -a "name=spark shell=/bin/bash groups=hadoop append=yes generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa"
 
+ansible all -i hosts -b -m authorized_key -a "user=spark key='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+wUKrTG/trS4w7UEKR6FgIsIASrtTS+NGSj/wPYYp7E+ZpPb4sOq2tjO09M1kzRlQA+ZdwLeZnNBFT2E9lHkS6jZu65p8ZcLhWFM7R9Qebw7YgdEsmBUYLctkpyZU1gg5bvexqM0uTO7n5Kp2F3AMG2r6N4STeNXwE6axSDsVglWMAf4ZUFOpHSF8KbIbgU4ZEpSrsYzXjASaU5oLf6emysdsAHWeVNw6t30EExnCXEWf6Inkbh24O3rOsmgvE+9OaibMyOVmp0adXo/aHgf7MQZLrZ3UGNuwP5CEElgRwyy4WK3RgsWKBYxQClRF1+1NBN2rFIFBFtXJ5JBYb1Ld ansible-enerated on ip-10-0-0-30'"
+
 ###### create directory
 
 ansible all -i hosts -b -m file -a "path=/usr/dap state=directory owner=spark group=hadoop mode=0775"

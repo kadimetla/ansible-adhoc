@@ -47,3 +47,5 @@ ansible all -i hosts -b -m copy -a "src=spark-env.sh  dest=/usr/dap/spark-2.3.0-
 ansible all -i hosts -b -m copy -a "src=slaves  dest=/usr/dap/spark-2.3.0-bin-hadoop2.7/conf/ owner=spark group=hadoop"
 ###### install open jdk
 ansible all -i hosts -b -m package -a "name=default-jdk state=latest"
+###### install python pip
+ansible all -i hosts -b -m package -a "name=python-pip  state=latest"

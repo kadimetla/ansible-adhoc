@@ -51,3 +51,5 @@ ansible all -i hosts -b -m package -a "name=default-jdk state=latest"
 ansible all -i hosts -b -m package -a "name=python-pip  state=latest"
 ###### install awscli
 ansible all -i hosts -b -m pip -a "name=awscli  state=latest"
+###### sudo user command
+ansible dev-data-1  -b --become-method=sudo --become-user=hadoop -a "sudo netstat -anp"

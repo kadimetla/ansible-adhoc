@@ -11,6 +11,7 @@ ansible spark-cluster -i hosts -s -m raw -a "test -e /usr/bin/python || (apt-get
 
 ansible spark-cluster -i hosts -b -m raw -a "test -e /usr/bin/python || (apt-get -y update && apt-get install -y python3 python-simplejson)"
 
+
 ###### create group
 
 ansible all -i hosts -b -m group -a "name=hadoop state=present"
@@ -53,3 +54,7 @@ ansible all -i hosts -b -m package -a "name=python-pip  state=latest"
 ansible all -i hosts -b -m pip -a "name=awscli  state=latest"
 ###### sudo user command
 ansible dev-data-1  -b --become-method=sudo --become-user=hadoop -a "sudo netstat -anp"
+
+###### shell or raw for shell commands
+ansible all  -m shell -a "ps -ef | grep 'hbase.regionserver.HRegionServer' | grep -v grep | awk '{print $2}'"
+ansible all  -m raw -a "ps -ef | grep 'hbase.regionserver.HRegionServer' | grep -v grep | awk '{print $2}'"
